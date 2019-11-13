@@ -332,14 +332,23 @@ You find this when searching for some music, which leads you to be-quick-or-be-d
 
 ##### Writeup
 First thing I do is download the program and use objdump -d to look through it. After a little looking, we see that we want to avoid the timer, overall.
+
 ![bequick1](/images/bequick1.png)
+
 So what I’ll do is use a hex editor to ignore these lines so that we can move on to printing the flag, and hopefully that’ll work. Using the online hex editor “hexed.it”, I open the file and look for the 800 addresses, and after finding 840, I see familiar hex code.
+
 ![bequick2](/images/bequick2.png)
+
 ![bequick3](/images/bequick3.png)
+
 Replacing them with the “nop” code, we should get the flag. Which did not work:
+
 ![bequick4](/images/bequick4.png)
+
 So this time, let’s only remove the call for set_timer:
+
 ![bequick5](/images/bequick5.png)
+
 And it worked!
 
 

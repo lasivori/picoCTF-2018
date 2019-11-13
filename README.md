@@ -361,11 +361,16 @@ My buddy Blaise told me he learned about this cool cipher invented by a guy also
 
 ##### Writeup
 This is a simple challenge. For this one, when we connect to the server, we are given an encrypted text, and a quick look through shows us where we expect our flag to be:
+
 ![blaise1](/images/blaise1.png)
+
 pohzCZK{g1gt3w3_n1pn3wd_ax3s7_maj_hof08hk0}
 Assuming this is a Vigenere Cipher, I use this code breaking website to help out: https://www.boxentriq.com/code-breaking/vigenere-cipher. We figure out pretty quickly that the key is “FLAG”, but this decoder doesn’t decode the full text, since it is too long. So, I copy the encoded flag, and add letters beforehand until it makes sense:
+
 ![blaise2](/images/blaise2.png)
+
 ![blaise3](/images/blaise3.png)
+
 Which gives us the flag!
 
 ---
@@ -389,36 +394,294 @@ This flag has been encrypted with some kind of cipher, can you decrypt it? Conne
 
 ##### Writeup
 This is a substitution cipher, so looking up “substitution cipher decoder” I found this website: https://www.guballa.de/substitution-solver. This solves the cipher really quickly and gives us the flag.
+
 ![hertz2](/images/hertz2-1.png)
 
 ---
 ### leak-me
 ##### Challenge
+```
+Can you authenticate to this service and get the flag? Connect with nc 2018shell.picoctf.com 1271. Source.
+```
+
 ##### Writeup
+This challenge is a buffer overflow challenge. Looking at the source code, we see that the password can be 64 characters long, and the username can be 256 characters long. What I did was input 257 characters as the username, and I received the password (as part of the username). I then retried logging in, but with a few letters in the username, then trying out this “really secure password”, which gave me the flag.
 
 ---
-### title
+### now you don't
 ##### Challenge
+```
+We heard that there is something hidden in this picture. Can you find it?
+```
+
 ##### Writeup
+You get a red image for this challenge, along with the hint “is it really all one shade of red?”. So I decided to throw the image in an image editor, and mess with the color balance until I could see letters, which gave me the flag: picoCTF{n0w_y0u_533_m3}
+
+![now you don't](/images/see.png)
+
+![now you see me](/images/seeme.png)
 
 ---
-### title
+### quackme
 ##### Challenge
+```
+Can you deal with the Duck Web? Get us the flag from this program. You can also find the program in /problems/quackme_2_45804bbb593f90c3b4cefabe60c1c4e2.
+```
+
 ##### Writeup
+Looking through the main function, we see that there is a call to a written function <do_magic>. When I looked through this function, I noticed that there are some places that the code is using addresses that may be useful:
+
+![quack](/images/quack1.png)
+
+Such as 0x8048858, and 0x804a038. We can use objdump -sj .rodata main to view the hardcoded strings, and their addresses:
+
+![quack](/images/quack2.png)
+
+So we want to get the message “You are the winner!”, which has the address close to 804488a8. So we will probably have to work with the 0x8048858 address, especially since it is added to eax. The exact address of the “winner” message would be 80488ab. Going back through the do_magic function, I actually found that the address we need is already there, so we just need to find a way to get past the checks: 
+
+![quack](/images/quack3.png)
+
+Before the push, there is a jump past if -0x1c(ebp) is not equal to 0x19, which is equal to 25. The code adds 1 to eax with each loop, and the amount of loops is equal to how many letters of input there are. There is also a xor operation between eax and ecx, but what is ecx equal to?
+Before the xor, we see that ecx is set to equal the address added to eax, so it’s going through multiple addresses for comparison.
+
+![quack](/images/quack4.png)
+
+And then it goes on to compare to some other address:
+
+![duck](/images/quack5.png)
+
+Which 0x804a038 is apparently located in .data, and gives us an address (in little endian) that brings us back to .rodata, and points to the beginning of the main prompt “you have now entered the Duck Web”
+
+![duck](/images/quack6.png)
+
+From all of this, we see that there is a xor operation happening between what you input and some binaries/hex that is then compared to the starting prompt. So what if we xor the binaries/hex with the prompt?
+
+![goose!](/images/quack7.png)
+
+We get the flag! 
+
 
 ---
-### title
+### shellcode
 ##### Challenge
+```
+This program executes any input you give it. Can you get a shell? You can find the program in /problems/shellcode_0_48532ce5a1829a772b64e4da6fa58eed on the shell server. Source.
+```
+
 ##### Writeup
+For this challenge, we need to get a shell through a program. First we need to write or get shellcode, so after a quick google, we find shellstorm, which has shellcode prepared. Using uname, we find that the shell runs on Linux, so we go to the Linux section and we just need to find a simple code that gives /bin/sh. This one seemed to be simple enough: http://shell-storm.org/shellcode/files/shellcode-690.php. We take the characters it gives in the code, and print it into `./vuln`, but this doesn’t keep input open. I didn’t know how to keep the pipe open for continuous input, so after a google search, I’ve found that if I cat the file and add ‘-’ to the end before piping, it keeps it open for input. So, I put the string to get to the shell in `~/shell.txt`. Then, using the line `cat ~/shell.txt - | ./vuln`  I was able to get access to a shell with more permissions. I then used ls to see what there is, and then `cat flag.txt` to get the flag: picoCTF{shellc0de_w00h00_9ee0edd0}
 
 ---
-### title
+### what base is this?
 ##### Challenge
+```
+To be successful on your mission, you must be able read data represented in different ways, such as hexadecimal or binary. Can you get the flag from this program to prove you are ready? Connect with nc 2018shell.picoctf.com 14390.
+```
+
 ##### Writeup
+This challenge is a fairly simple one. We are asked to give input based off of how data is stored:
+
+![base](/images/base.png)
+
+The first one is binary, the second is hex, and the final is octal. The first two were easy to see what they were, then convert, but for the octal one, I at first thought it’d be decimal, but that didn’t match up, so I had to go find an octal converter. After answering the questions we get the flag: picoCTF{delusions_about_finding_values_602fd280}
 
 ---
-### title
+### you can't see me
 ##### Challenge
+```
+'...reading transmission... Y.O.U. .C.A.N.'.T. .S.E.E. .M.E. ...transmission ended...' Maybe something lies in /problems/you-can-t-see-me_4_8bd1412e56df49a3c3757ebeb7ead77f.
+```
+
 ##### Writeup
+This challenge gives the hint “What's in the manual page of ls?” and we also get a hint with the "reading transmission" part.
+Files with dots in the beginning can be hidden, but using the man page we can see that the ls command can still be used to see those files, using `-a` or `--all`. Using the command `ls -a`, we only see dots. So we need to cat the file, but just using `cat .` does not work, so instead we'll have to read everything starting with '.'
+
+![dots](/images/hidden.png)
+
+Which gives us the flag: picoCTF{j0hn_c3na_paparapaaaaaaa_paparapaaaaaa_22f627d9}
+
+---
+### Buttons 
+##### Challenge
+```
+There is a website running at http://2018shell.picoctf.com:21579 (link). Try to see if you can push their buttons.
+```
+
+##### Writeup
+For this challenge, you are sent to a website. This website has a button that when you click, it leads to another “button” that leads to a “rick roll” page. Checking the page sources, the main difference between the two buttons is that the first one that actually works is a form
+
+![form](/images/buttons1.png)
+
+But the second one is an href
+
+![href](/images/buttons2.png)
+
+So, using Google Chrome’s ability to edit html, i put the second button in the same format as the first:
+
+![edit](/images/buttons3.png)
+ 
+Which, when I click the button now, it leads to the flag: picoCTF{button_button_whose_got_the_button_ed306c10}
+
+---
+### Ext Super Magic
+##### Challenge
+```
+We salvaged a ruined Ext SuperMagic II-class mech recently and pulled the filesystem out of the black box. It looks a bit corrupted, but maybe there's something interesting in there. You can also find it in /problems/ext-super-magic_2_5e1f8bfb15060228f577045924e4fca8 on the shell server.
+```
+
+##### Writeup
+This challenge gives a filesystem that is corrupted, and we need to fix it in order to get the flag. We are given a few hints, one of which leads to this website: http://www.nongnu.org/ext2-doc/ext2.html. The first thing I thought to do was look for the words in the challenge title. “Ext” is very common in the website, super is a little less common, but magic only showed up 15 times on the page. Looking through them, we see this section:
+
+![s_magic](/images/supermagic1.png)
+
+This may be helpful, but we have yet to see. Another hint was using the file command:
+
+![hint](/images/supermagic2.png)
+
+Which gives us nothing. What about the last hint:
+
+![hint](/images/supermagic3.png)
+
+It says there is a bad number in the superblock, but how do we know where? According to the website previously listed, the magic number we found before belongs at an offset of 56 bytes, from 1024 (since this format always has the superblock at an offset of 1024). So now we will use a hexeditor (hexed.it) to hopefully fix the issue.
+Decimal 1080 leads to hex 438, and I am assuming we are using little endian format.
+
+![hexedit](/images/supermagic4.png)
+
+![debugfs](/images/supermagic5.png)
+
+It worked, so now we use debugfs to access the files in the image: 
+
+![flag.jpg](/images/supermagic6.png)
+
+Surrounded by hundreds of other files, I just searched for “flag” using /flag, and found this. Now that I know it is a thing, I need to save it to access it. After a quick google, I found that the way to do this with debugfs is to use the command “dump”:
+
+![dump](/images/supermagic7.png)
+
+This gives us a fairly large image with this at the top:
+
+![flag](/images/supermagic8.png)
+
+We got the flag! picoCTF{ab0CD63BC762514ea2f4fc9eDEC8cb1E}
+
+---
+### Lying Out
+##### Challenge
+```
+Some odd traffic has been detected on the network, can you identify it? More info here. Connect with nc 2018shell.picoctf.com 27108 to help us answer some questions.
+```
+
+##### Writeup
+This is a simple one. You get an image on the traffic of IPs connecting to a server, which has three spikes (one in the morning, one at noon, and one in the evening).
+
+![graph](/images/lyingout1.png)
+
+Following instructions, and comparing data, we put in the areas that should not have spikes, but are shown to:
+
+![traffic](/images/lyingout2.png)
+
+And we get the flag! picoCTF{w4y_0ut_de051415}
+
+---
+### The Vault
+##### Challenge
+```
+There is a website running at http://2018shell.picoctf.com:53261 (link). Try to see if you can login!
+```
+
+##### Writeup
+The website is fairly simple, and provides a link under the login, which gives us this:
+
+![vault](/images/vault1.png)
+
+This tells us that they are using SQL to store their passwords, so what we are going to do is the same thing we did with Irish Repo: just enter any username, and have the password of ‘ or ‘ = ‘x
+Which works, and gives us the flag: picoCTF{w3lc0m3_t0_th3_vault_23495366}
+
+![vault](/images/vault2.png)
+
+---
+### What's My Name?
+##### Challenge
+```
+Say my name, say my name.
+```
+
+##### Writeup
+The hint for this challenge asks “If you visited a website at an IP address, how does it know the name of the domain?” This would be though DNS. We are given a pcap file that we open with wireshark, and we use the ‘dns’ filter:
+
+![dns](/images/name1.png)
+
+Which, we find the flag within the second one: picoCTF{w4lt3r_wh1t3_ddfad6f8f4255adc73e862e3cebeee9d}
+
+![name](/images/name2.png)
+
+---
+### absolutely relative
+##### Challenge
+```
+In a filesystem, everything is relative ¯\_(ツ)_/¯. Can you find a way to get a flag from this program? You can find it in /problems/absolutely-relative_0_d4f0f1c47f503378c4bb81981a80a9b6 on the shell server. Source.
+```
+
+##### Writeup
+Looking at the source code, we see that the program will read for a file called “permission.txt” with the input “yes”. Going to the program location, we cannot make any files or get permissions for the program, so we have to do so from home: 
+
+![relative](/images/relative.png)
+
+And it works! The flag is: picoCTF{3v3r1ng_1$\_r3l3t1v3_befc0ce1}
+
+---
+### assembly-2
+##### Challenge
+```
+What does asm2(0xe,0x21) return? Submit the flag as a hexadecimal value (starting with '0x'). NOTE: Your submission for this question will NOT be in the normal flag format. Source located in the directory at /problems/assembly-2_3_c3ee3603bd2a8e682f1d64cf6dfd21fb.
+```
+
+##### Writeup
+For this assembly file, we have the inputs 0xE and 0x21, and some conditional jumps that have us add directly to those inputs. We compare our first input (0xE) to 0x9886; if we are less than or equal, we jump to ‘part_a’ and add 1 to our second variable (0x21) and 0x41 to our first variable (0xE). Since I know that I would be sitting here for a while doing math if I did it by hand, I just decided to use some simple python to tell me how many times we would be adding 0x41 to 0xE before we stop jumping. I used a while loop, adding 1 to a counter each time we go through, and in the end it looped 600 times. I added 600 to 0x21 to get 0x279, but the flag was wrong; I figured I was probably just off by one, and put in 0x27a, which was correct. 
+
+---
+### buffer overflow 2
+##### Challenge
+```
+Alright, this time you'll need to control some arguments. Can you get the flag from this program? You can find it in /problems/buffer-overflow-2_3_02aff35ae94896082cad513865e6c2eb on the shell server. Source.
+```
+
+##### Writeup
+This one is a bit more complicated than the last. We need to pass in arguments this time. Using objdump, we can see that there is still the ‘win’ function, and the checks that are in the source code are within the ‘win’ function, so first we need to get there, then give the arguments. So, using gdb so that I’d be able to view what’s in registers, I put a breakpoint at vuln and at win. 
+
+![win](/images/overflow2-1.png)
+
+Since a breakpoint is automatically added in main, I just step so that we get to the next break, which is in vuln. We need to set another breakpoint while we are here, right where return is. This way we can give an input and see what we need to in the stack and registers.
+
+![gdb](/images/overflow2-2.png)
+
+To find out where everything is relative to the buffer, we put 100 A’s (the buffer size), then starting with B, continuing the alphabet.
+
+![gdb](/images/overflow2-3.png)
+
+We see here that arglist is “0x4d4c4b4a” which are the letters “MLKJ”, and esp is “0x51504f4e” which are the letters “QPON”. Since we return to where esp gives us, we will replace it with the win address. Now, we restart the program giving a new input:
+
+![cmd](/images/overflow2-4.png)
+
+Now that we would get to win, we continue so that we can see where our arguments belong. We need to stop before the comparison, just to make sure that the arguments are not being edited in any way, so we add another break at 0x0804861a. I got stuck here, since trying to continue to this break keeps on stopping the program so that I cannot look at the arguments being loaded in. After an hour of trying to figure out where I went wrong, I started to watch a video on the challenge and realized that I made a stupid mistake of mistyping where the ‘win’ function is. I had put 0x080485d1, but the win function actually starts at 0x080485cb. After this one, I stopped getting the same error, and instead got a new one telling me that the flag file is missing. 
+
+![gdb](/images/overflow2-5.png)
+
+After this, I tried downloading the files and running it on my virtual machine, but that didn’t work either. 
+
+![vm](/images/overflow2-6.png)
+
+In the end, I just decided to try out answers until it worked. I assumed that the arguments would be in order, so after the part of the buffer that is the return address that we want, I put in the little endian hex values for the arguments: DEADBEEF and DEADC0DE. The first attempt didn’t work, but I put 4 A’s between the arguments and the address, and got the flag: picoCTF{addr3ss3s_ar3_3asya4104c14}
+
+![flag](/images/overflow2-7.png)
+
+---
+### caesar cipher 2
+##### Challenge
+```
+Can you help us decrypt this message? We believe it is a form of a caesar cipher. You can find the ciphertext in /problems/caesar-cipher-2_1_ac88f1b12e9dbca252d450d374c4a087 on the shell server.
+```
+
+##### Writeup
+Caesar ciphers tend to be simple, so there’s already tons of online tools for decoding them. I used this one, since it’s for the full ascii alphabet: https://www.dcode.fr/ascii-shift-cipher. The cipher text is this weird text: `e^Xd8I;pX6ZhVGT8^E]:gHT_jHITVG:cITh:XJg:r`  given to us by the shell server. Decoding it with the website, one of the decryptions is the flag: picoCTF{cAesaR_CiPhErS_juST_aREnT_sEcUrE}
 
 ---

@@ -26,6 +26,15 @@ Challenges | Category | Points
 [hertz](#hertz) | Cryptography | 150
 [hex editor](#hex-editor) | Forensics | 150
 [ssh-keyz](#ssh-keyz) | General Skills | 150
+[Irish Name Repo](#irish-name-repo) | Web Exploitation | 200
+[Mr Robots](#mr-robots) | Web Exploitation | 200
+[No Login](#no-login) | Web Exploitation | 200
+[Secret Agent](#secret-agent) | Web Exploitation | 200
+[Truly an Artist](#truly-an-artist) | Forensics | 200
+[assembly-1](#assembly-1) | Reversing | 200
+[be-quick-or-be-dead-1](#be-quick-or-be-dead-1) | Reversing | 200
+[blaise's cipher](#blaises-cipher) | Cryptography | 200
+
 
 ---
 ### grep 1
@@ -150,61 +159,97 @@ This is the given image:
 I’m not too familiar with forensics problems, but this one was a simple one to solve. There is a hidden message inside of an image, and the hint says that we can find a decoder online. I was at first confused by the “stego-saurus” part, but after looking for image decoders, I quickly found out that this was referencing steganography. Finding an online decoder was easy (I used https://stylesuxx.github.io/steganography/), and so all I had to do was put the image in, and I got the flag.
 
 ---
-### title
+### Recovering From the Snap
 ##### Challenge
+```
+There used to be a bunch of animals here, what did Dr. Xernon do to them?
+```
 
 ##### Writeup
+I honestly had no idea what to do here. I decided to look up the problem, and the [first writeup](https://github.com/mzfr/ctf-writeups/tree/master/picoCTF-2018/Forensics/Recovering%20From%20the%20Snap) I found let me know that it was really easy, and all I had to do was use tools for it, such as Photorec. Using this program on the file provided, you will get 4 recovered images, one of which is the flag picoCTF{th3_5n4p_happ3n3d}.
 
 ---
-### title
+### admin panel
 ##### Challenge
+```
+We captured some traffic logging into the admin panel, can you find the password?
+```
 
 ##### Writeup
+Using WireShark, I went through the packets of the .pcap file. Where there was communication with a website, I would see some readable text, so I just kept going through all of them until I found the flag. 
 
 ---
-### title
+### assembly-0
 ##### Challenge
+```
+What does asm0(0x2a,0x4f) return? Submit the flag as a hexadecimal value (starting with '0x'). NOTE: Your submission for this question will NOT be in the normal flag format. Source located in the directory at /problems/assembly-0_3_b7d6c21be1cefd3e53335a66e7815307.
+```
 
 ##### Writeup
+I downloaded the source code, then opened it in Atom. The challenge shows us that we are putting in two arguments, and asks what the assembly will return (the flag is not normal format). So I just followed the code: the first two lines are setting up stack space for the function, and saving the return address; next, eax gets the first argument, and ebx gets the second; right after that, we put ebx in eax, so now eax = ebx. The second argument (0x4f) is what is returned.
 
 ---
-### title
+### buffer overflow 0
 ##### Challenge
+```
+Let's start off simple, can you overflow the right buffer in this program to get the flag? You can also find it in /problems/buffer-overflow-0_0_6461b382721ccca2318b1d981d363924 on the shell server. Source.
+```
 
 ##### Writeup
+The source code shows that the flag’s max size is 64, so I ran the vuln program with 65 letters as the argument to get the flag.
 
 ---
-### title
+### caesar cipher 1
 ##### Challenge
+```
+This is one of the older ciphers in the books, can you decrypt the message? You can find the ciphertext in /problems/caesar-cipher-1_4_e4dc6dcfb004bdade0b9ce8e44f1bac4 on the shell server.
+```
 
 ##### Writeup
+It was quite simple to find a caesar cipher decoder, give it the flag, then check for each shift until the flag had recognizable words. 
 
 ---
-### title
+### environ
 ##### Challenge
+```
+Sometimes you have to configure environment variables before executing a program. Can you find the flag we've hidden in an environment variable on the shell server?
+```
 
 ##### Writeup
+All that needed to be done was going into the picoCTF shell and using the command `printenv | grep picoCTF` to get the flag.
 
 ---
-### title
+### hertz
 ##### Challenge
+```
+Here's another simple cipher for you where we made a bunch of substitutions. Can you decrypt it? Connect with nc 2018shell.picoctf.com 48487.
+```
 
 ##### Writeup
+This challenge was a substitution cipher. At first, I was just going to manually do it by going with some simple crypto analysis, and after finding that q = e, I realized it would take a while. I went online to see if there was an online brute force decoder for it, I quickly found guballa.de, which solved the problem almost immediately, giving us the flag (which was not in normal format): substitution_ciphers_are_solvable_cdilgndlnp.
 
 ---
-### title
+### hex editor
 ##### Challenge
+```
+This cat has a secret to teach you. You can also find the file in /problems/hex-editor_1_10cafee5618ce2cfe32f2188ca1f472e on the shell server.
+```
 
 ##### Writeup
+This challenge tells us to use hex editors, such as the xxd command. The image being used seems like it would be too large to read through all of the hex, so I piped the output to grep to find the flag: xxd hex_editor.jpg | grep pico. But this only gave me the first piece of the flag. At the beginning of each line, though, is a relative address. The one I was first given was 00012940. I assumed this was hex, and added 8 to it. This gave me no result, probably because each line is a jump of 16, not 8. So afterwards, I just jumped the address up by 0x10 until I got the full flag: xxd hex_editor.jpg | grep 00012950, etc.
 
 ---
-### title
+### ssh-keyz
 ##### Challenge
+```
+As nice as it is to use our webshell, sometimes its helpful to connect directly to our machine. To do so, please add your own public key to ~/.ssh/authorized_keys, using the webshell. The flag is in the ssh banner which will be displayed when you login remotely with ssh to with your username
+```
 
 ##### Writeup
+Following the tutorial in the hints section, I made my own key and had to make a directory and file in the ctf shell to have my key authorized. After that, it was as simple as logging into the shell through ssh: `ssh lasivori@2018shell4.picoctf.com`
 
 ---
-### title
+### Irish Name Repo
 ##### Challenge
 
 ##### Writeup

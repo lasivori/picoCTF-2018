@@ -60,7 +60,7 @@ Can you find the flag in file? This would be really obnoxious to look through by
 ```
 
 ##### Writeup
-I just had to get to the given folder using the given CTF shell, then used `grep picoctf` to get the flag from the file.
+I just had to get to the given folder using the given CTF shell, then used `cat file | grep pico` to get the flag from the file: picoCTF{grep_and_you_will_find_d66382d8}
 
 ---
 ### net cat
@@ -70,7 +70,7 @@ Using netcat (nc) will be a necessity throughout your adventure. Can you connect
 ```
 
 ##### Writeup
-Using the command `nc 2018shell.picoctf.com 36356` gives the flag.
+Using the command `nc 2018shell.picoctf.com 36356` gives the flag: picoCTF{NEtcat_iS_a_NEcESSiTy_9454f3e0}  
 
 ---
 ### HEEEEEEERE'S Johnny!
@@ -80,7 +80,7 @@ Okay, so we found some important looking files on a linux computer. Maybe they c
 ```
 
 ##### Writeup
-When I first saw this challenge, I honestly had no idea where to start, so I decided I'd come back to it later. After working on the pico2019 challenge related to using John the Ripper, I now have an understanding of what to do, so I used the command `unshadow passwd shadow > file`. Then using the command john file, it shows the password for the user “root” being password1, so I was able to log in to where the challenge told us to, and I received the flag.
+When I first saw this challenge, I honestly had no idea where to start, so I decided I'd come back to it later. After working on the pico2019 challenge related to using John the Ripper, I now have an understanding of what to do, so I used the command `unshadow passwd shadow > file`. Then using the command john file, it shows the password for the user “root” being password1, so I was able to log in to where the challenge told us to, and I received the flag: picoCTF{J0hn_1$\_R1pp3d_1b25af80}
 
 ---
 ### strings
@@ -90,7 +90,7 @@ Can you find the flag in this file without actually running it? You can also fin
 ```
 
 ##### Writeup
-I used the command “strings strings” but a wall of text was thrown at me, so I decided to use this command: `strings strings | grep pico` which gives us the flag.
+I used the command “strings strings” but a wall of text was thrown at me, so I decided to use this command: `strings strings | grep pico` which gives us the flag: picoCTF{sTrIngS_sAVeS_Time_c09b1444}
 
 ---
 ### pipe
@@ -100,7 +100,7 @@ During your adventure, you will likely encounter a situation where you need to p
 ```
 
 ##### Writeup
-At first I just used the command `nc 2018shell.picoctf.com 2015`, but this just lead to text being thrown at me constantly. I then decided to put all the text to a file: `nc 2018shell.picoctf.com 2015 > file.txt`. I then used grep to find the flag: `strings file.txt | grep pico` which gives us the flag. 
+At first I just used the command `nc 2018shell.picoctf.com 2015`, but this just lead to text being thrown at me constantly. I then decided to put all the text to a file: `nc 2018shell.picoctf.com 2015 > file.txt`. I then used grep to find the flag: `strings file.txt | grep pico` which gives us the flag: picoCTF{almost_like_mario_8861411c} 
 
 ---
 ### Inspect Me
@@ -110,7 +110,7 @@ Inpect this code! http://2018shell.picoctf.com:28831 (link)
 ```
 
 ##### Writeup
-I opened the link provided, and what was shown was a simple website titled “My First Website”. I looked into the page source to view the html, and noticed a comment at the bottom showing part ⅓ of the flag. Noticing that the CSS stylesheet and the Javascript were also the writer’s own, I clicked those links to see if the remaining flag parts were there. I found part ⅔ of the flag in the stylesheet. The Javascript had what it claimed to be part 3/3 of the flag, but there was nothing shown to add to the flag
+I opened the link provided, and what was shown was a simple website titled “My First Website”. I looked into the page source to view the html, and noticed a comment at the bottom showing part ⅓ of the flag. Noticing that the CSS stylesheet and the Javascript were also the writer’s own, I clicked those links to see if the remaining flag parts were there. I found part ⅔ of the flag in the stylesheet. The Javascript had what it claimed to be part 3/3 of the flag, but there was nothing shown to add to the flag. The flag is: picoCTF{ur_4_real_1nspect0r_g4dget_b4887011}
 
 ---
 ### grep 2
@@ -120,7 +120,7 @@ This one is a little bit harder. Can you find the flag in /problems/grep-2_4_06c
 ```
 
 ##### Writeup
-This one gave me difficulty at first. Of course, I could go through each directory and use the grep command to search through all files, but that would take too long. I did not know how to search through multiple directories, though, so I went to google and found that it was simpler than I thought. I just had to put the path down, so I used the c`ommand grep ‘pico’ ./*/*` and got the flag.
+This one gave me difficulty at first. Of course, I could go through each directory and use the grep command to search through all files, but that would take too long. I did not know how to search through multiple directories, though, so I went to google and found that it was simpler than I thought. I just had to put the path down, so I used the command `grep pico ./*/*` and got the flag: picoCTF{grep_r_and_you_will_find_036bbb25}
 
 ---
 ### Aca-Shell-A
@@ -130,7 +130,7 @@ It's never a bad idea to brush up on those linux skills or even learn some new o
 ```
 
 ##### Writeup
-This challenge took me longer than I expected. It took me many attempts to get the flag. The first couple of parts were easy: all I had to do was get into the ‘secret’ folder, and do as the helper said. I already knew how to use the ‘rm’ command, and echo as well, but when I had to print the username without echo, I was stuck at first. It took me a while to actually get the hint (“Who are you?”), and after probably 15 minutes of retrying different things, I typed `whoami`, giving the username. After that, I just had to copy a file to another location, then print what that file contains.
+This challenge took me longer than I expected. It took me many attempts to get the flag. The first couple of parts were easy: all I had to do was get into the ‘secret’ folder, and do as the helper said. I already knew how to use the ‘rm’ command, and echo as well, but when I had to print the username without echo, I was stuck at first. It took me a while to actually get the hint (“Who are you?”), and after probably 15 minutes of retrying different things, I typed `whoami`, giving the username. After that, I just had to copy a file to another location, then print what that file contains. We get the flag: picoCTF{CrUsHeD_It_4e355279}
 
 ---
 ### Client Side is Still Bad
@@ -140,7 +140,7 @@ I forgot my password again, but this time there doesn't seem to be a reset, can 
 ```
 
 ##### Writeup
-This one was almost simpler than ‘Inspect Me’ challenge. All I did was to view the page source, and within all of the if statements.
+This one was almost simpler than ‘Inspect Me’ challenge. All I did was to view the page source, and within all of the if statements: picoCTF{client_is_bad_3bd366}
 
 ---
 ### Desrouleaux
@@ -150,7 +150,7 @@ Our network administrator is having some trouble handling the tickets for all of
 ```
 
 ##### Writeup
-For this challenge, I just followed the instructions on the screen. It would ask me questions about the .json file that was sent, such as what was the most common source IP, for which i would just check the file manually (there are only 10 entries, so it was a quick look over). Then, I it would give a source IP and ask how many unique destination IPs were targeted by it. The final question it what took me the longest. I had to find out the average amount of unique destinations for each file hash. The ‘3eeaf’ file had 2 destinations, but not unique, so I only counted one. ‘9387’ file had 2 unique destinations, and the rest of the files all had only 1 destination. There were a total of 8 files, so the average was 9/8 = 1.125, but they wanted it to 2 decimal places so the answer was 1.23.
+For this challenge, I just followed the instructions on the screen. It would ask me questions about the .json file that was sent, such as what was the most common source IP, for which i would just check the file manually (there are only 10 entries, so it was a quick look over). Then, I it would give a source IP and ask how many unique destination IPs were targeted by it. The final question it what took me the longest. I had to find out the average amount of unique destinations for each file hash. The ‘3eeaf’ file had 2 destinations, but not unique, so I only counted one. ‘9387’ file had 2 unique destinations, and the rest of the files all had only 1 destination. There were a total of 8 files, so the average was 9/8 = 1.125, but they wanted it to 2 decimal places so the answer was 1.13. The flag given at the end was this: picoCTF{J4y_s0n_d3rUUUULo_a062e5f8}
 
 ---
 ### Logon 
@@ -160,7 +160,7 @@ I made a website so now you can log on to! I don't seem to have the admin passwo
 ```
 
 ##### Writeup
-For this one, I understood that I couldn’t just log in as admin, and that putting any other strings into username and password would log me in, but I would be told that I get no flag. After an hour of looking at the page source, and trying random passwords with the admin username, I gave up and decided to look up the challenge. After figuring out that it had something to do with editing cookies, I downloaded a cookie editor. Going back to the page and trying to log in, I noticed that one of the cookies is labelled ‘admin’, and it is set to ‘False’, so it would make sense to just change it to being ‘True’. After doing that and refreshing the page, I got the flag.
+For this one, I understood that I couldn’t just log in as admin, and that putting any other strings into username and password would log me in, but I would be told that I get no flag. After an hour of looking at the page source, and trying random passwords with the admin username, I gave up and decided to look up the challenge. After figuring out that it had something to do with editing cookies, I downloaded a cookie editor. Going back to the page and trying to log in, I noticed that one of the cookies is labelled ‘admin’, and it is set to ‘False’, so it would make sense to just change it to being ‘True’. After doing that and refreshing the page, I got the flag: picoCTF{l0g1ns_ar3nt_r34l_a280e12c}
 
 ---
 ### Reading Between the Eyes
@@ -192,7 +192,7 @@ We captured some traffic logging into the admin panel, can you find the password
 ```
 
 ##### Writeup
-Using WireShark, I went through the packets of the .pcap file. Where there was communication with a website, I would see some readable text, so I just kept going through all of them until I found the flag. 
+Using WireShark, I went through the packets of the .pcap file. There is communication with a website, and we are wanting the password for the admin, so we need to look for where ever users log in, which is shown in this pcap with `POST /login`. It doesn't take too long to find the one that the admin is specifically logging in, and we get the password, which is the flag: picoCTF{n0ts3cur3_894a6546}
 
 ---
 ### assembly-0

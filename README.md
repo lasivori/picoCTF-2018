@@ -145,6 +145,9 @@ Stego-Saurus hid a message for you in this image, can you retreive it?
 ```
 
 ##### Writeup
+This is the given image:
+![husky](/images/husky.png)
+I’m not too familiar with forensics problems, but this one was a simple one to solve. There is a hidden message inside of an image, and the hint says that we can find a decoder online. I was at first confused by the “stego-saurus” part, but after looking for image decoders, I quickly found out that this was referencing steganography. Finding an online decoder was easy (I used https://stylesuxx.github.io/steganography/), and so all I had to do was put the image in, and I got the flag.
 
 ---
 ### title

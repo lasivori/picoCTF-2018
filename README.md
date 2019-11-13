@@ -65,5 +65,6 @@ Can you find the flag in this file without actually running it? You can also fin
 ```
 
 ##### Writeup
+I used the command “strings strings” but a wall of text was thrown at me, so I decided to use this command: `strings strings | grep pico` which gives us the flag.
 
 ---

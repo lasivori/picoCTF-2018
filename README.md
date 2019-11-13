@@ -172,7 +172,7 @@ Stego-Saurus hid a message for you in this image, can you retreive it?
 ##### Writeup
 This is the given image:
 ![husky](/images/husky.png)
-I’m not too familiar with forensics problems, but this one was a simple one to solve. There is a hidden message inside of an image, and the hint says that we can find a decoder online. I was at first confused by the “stego-saurus” part, but after looking for image decoders, I quickly found out that this was referencing steganography. Finding an online decoder was easy (I used https://stylesuxx.github.io/steganography/), and so all I had to do was put the image in, and I got the flag.
+I’m not too familiar with forensics problems, but this one was a simple one to solve. There is a hidden message inside of an image, and the hint says that we can find a decoder online. I was at first confused by the “stego-saurus” part, but after looking for image decoders, I quickly found out that this was referencing steganography. Finding an online decoder was easy (I used https://stylesuxx.github.io/steganography/), and so all I had to do was put the image in, and I got the flag: picoCTF{r34d1ng_b37w33n_7h3_by73s}
 
 ---
 ### Recovering From the Snap
@@ -332,14 +332,14 @@ You find this when searching for some music, which leads you to be-quick-or-be-d
 
 ##### Writeup
 First thing I do is download the program and use objdump -d to look through it. After a little looking, we see that we want to avoid the timer, overall.
-[bequick1](/images/bequick1)
+![bequick1](/images/bequick1.png)
 So what I’ll do is use a hex editor to ignore these lines so that we can move on to printing the flag, and hopefully that’ll work. Using the online hex editor “hexed.it”, I open the file and look for the 800 addresses, and after finding 840, I see familiar hex code.
-[bequick2](/images/bequick2)
-[bequick3](/images/bequick3)
+![bequick2](/images/bequick2.png)
+![bequick3](/images/bequick3.png)
 Replacing them with the “nop” code, we should get the flag. Which did not work:
-[bequick4](/images/bequick4)
+![bequick4](/images/bequick4.png)
 So this time, let’s only remove the call for set_timer:
-[bequick5](/images/bequick5)
+![bequick5](/images/bequick5.png)
 And it worked!
 
 
@@ -352,11 +352,11 @@ My buddy Blaise told me he learned about this cool cipher invented by a guy also
 
 ##### Writeup
 This is a simple challenge. For this one, when we connect to the server, we are given an encrypted text, and a quick look through shows us where we expect our flag to be:
-[blaise1](/images/blaise1)
+![blaise1](/images/blaise1.png)
 pohzCZK{g1gt3w3_n1pn3wd_ax3s7_maj_hof08hk0}
 Assuming this is a Vigenere Cipher, I use this code breaking website to help out: https://www.boxentriq.com/code-breaking/vigenere-cipher. We figure out pretty quickly that the key is “FLAG”, but this decoder doesn’t decode the full text, since it is too long. So, I copy the encoded flag, and add letters beforehand until it makes sense:
-[blaise2](/images/blaise2)
-[blaise3](/images/blaise3)
+![blaise2](/images/blaise2.png)
+![blaise3](/images/blaise3.png)
 Which gives us the flag!
 
 ---
@@ -380,7 +380,7 @@ This flag has been encrypted with some kind of cipher, can you decrypt it? Conne
 
 ##### Writeup
 This is a substitution cipher, so looking up “substitution cipher decoder” I found this website: https://www.guballa.de/substitution-solver. This solves the cipher really quickly and gives us the flag.
-[hertz2](/images/hertz2-1)
+![hertz2](/images/hertz2-1.png)
 
 ---
 ### leak-me

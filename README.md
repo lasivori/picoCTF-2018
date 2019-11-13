@@ -30,7 +30,9 @@ Challenges | Category | Points
 ---
 ### grep 1
 ##### Challenge
+```
 Can you find the flag in file? This would be really obnoxious to look through by hand, see if you can find a faster way. You can also find the file in /problems/grep-1_4_0431431e36a950543a85426d0299343e on the shell server.
+```
 
 ##### Writeup
 I just had to get to the given folder using the given CTF shell, then used “grep picoctf” to get the flag from the file.
@@ -38,7 +40,9 @@ I just had to get to the given folder using the given CTF shell, then used “gr
 ---
 ### net cat
 ##### Challenge
+```
 Using netcat (nc) will be a necessity throughout your adventure. Can you connect to 2018shell.picoctf.com at port 36356 to get the flag?
+```
 
 ##### Writeup
 Using the command “nc 2018shell.picoctf.com 36356” gives the flag.
@@ -46,7 +50,9 @@ Using the command “nc 2018shell.picoctf.com 36356” gives the flag.
 ---
 ### HEEEEEEERE'S Johnny!
 ##### Challenge
+```
 Okay, so we found some important looking files on a linux computer. Maybe they can be used to get a password to the process. Connect with nc 2018shell.picoctf.com 40157. Files can be found here: passwd shadow.
+```
 
 ##### Writeup
 When I first saw this challenge, I honestly had no idea where to start, so I decided I'd come back to it later. After working on the pico2019 challenge related to using John the Ripper, I now understand why it’s got the name it chose, so I used the command unshadow passwd shadow > file. Then using the command john file, it shows the password for the user “root” being password1, so I was able to log in to where the challenge told us to, and I received the flag.
@@ -54,5 +60,10 @@ When I first saw this challenge, I honestly had no idea where to start, so I dec
 ---
 ### strings
 ##### Challenge
+```
+Can you find the flag in this file without actually running it? You can also find the file in /problems/strings_0_bf57524acf558aca2081eb97ece8e2ee on the shell server.
+```
 
 ##### Writeup
+
+---

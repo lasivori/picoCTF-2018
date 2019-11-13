@@ -4,7 +4,15 @@ Here are the writeups for the challenges I have solved for PicoCTF 2018. The war
 
 Challenges | Category | Points | Progress
 -----------|----------|--------|-----------
-grep 1 | General Skills | 75 | Solved
+[grep 1](#grep-1) | General Skills | 75 | Solved
 net cat | General Skills | 75 | Solved
 HEEEEEEERE'S Johnny\! | Cryptography | 100 | Solved
 strings | General Skills | 100 | Solved
+
+
+
+
+
+
+
+### grep 1#grep-1

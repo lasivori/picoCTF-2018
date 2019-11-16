@@ -51,6 +51,10 @@ Challenges | Category | Points
 [assembly-2](#assembly-2) | Reversing | 250
 [buffer overflow 2](#buffer-overflow-2) | Binary Exploitation | 250
 [caesar cipher 2](#caesar-cipher-2) | Cryptography | 250
+[learn gdb](#learn-gdb) | General Skills | 300
+[Flaskcards](#flaskcards) | Web Exploitation | 350
+[Secure Logon](#secure-logon) | Web Exploitation | 500
+
 
 ---
 ### grep 1
@@ -60,7 +64,7 @@ Can you find the flag in file? This would be really obnoxious to look through by
 ```
 
 ##### Writeup
-I just had to get to the given folder using the given CTF shell, then used `cat file | grep pico` to get the flag from the file: picoCTF{grep_and_you_will_find_d66382d8}
+I just had to get to the given folder using the given CTF shell, then used `cat file | grep pico` to get the flag from the file: `picoCTF{grep_and_you_will_find_d66382d8}`
 
 ---
 ### net cat
@@ -70,7 +74,7 @@ Using netcat (nc) will be a necessity throughout your adventure. Can you connect
 ```
 
 ##### Writeup
-Using the command `nc 2018shell.picoctf.com 36356` gives the flag: picoCTF{NEtcat_iS_a_NEcESSiTy_9454f3e0}  
+Using the command `nc 2018shell.picoctf.com 36356` gives the flag: `picoCTF{NEtcat_iS_a_NEcESSiTy_9454f3e0}`  
 
 ---
 ### HEEEEEEERE'S Johnny!
@@ -80,7 +84,7 @@ Okay, so we found some important looking files on a linux computer. Maybe they c
 ```
 
 ##### Writeup
-When I first saw this challenge, I honestly had no idea where to start, so I decided I'd come back to it later. After working on the pico2019 challenge related to using John the Ripper, I now have an understanding of what to do, so I used the command `unshadow passwd shadow > file`. Then using the command john file, it shows the password for the user “root” being password1, so I was able to log in to where the challenge told us to, and I received the flag: picoCTF{J0hn_1$\_R1pp3d_1b25af80}
+When I first saw this challenge, I honestly had no idea where to start, so I decided I'd come back to it later. After working on the pico2019 challenge related to using John the Ripper, I now have an understanding of what to do, so I used the command `unshadow passwd shadow > file`. Then using the command john file, it shows the password for the user “root” being password1, so I was able to log in to where the challenge told us to, and I received the flag: `picoCTF{J0hn_1$_R1pp3d_1b25af80}`
 
 ---
 ### strings
@@ -90,7 +94,7 @@ Can you find the flag in this file without actually running it? You can also fin
 ```
 
 ##### Writeup
-I used the command “strings strings” but a wall of text was thrown at me, so I decided to use this command: `strings strings | grep pico` which gives us the flag: picoCTF{sTrIngS_sAVeS_Time_c09b1444}
+I used the command “strings strings” but a wall of text was thrown at me, so I decided to use this command: `strings strings | grep pico` which gives us the flag: `picoCTF{sTrIngS_sAVeS_Time_c09b1444}`
 
 ---
 ### pipe
@@ -100,7 +104,7 @@ During your adventure, you will likely encounter a situation where you need to p
 ```
 
 ##### Writeup
-At first I just used the command `nc 2018shell.picoctf.com 2015`, but this just lead to text being thrown at me constantly. I then decided to put all the text to a file: `nc 2018shell.picoctf.com 2015 > file.txt`. I then used grep to find the flag: `strings file.txt | grep pico` which gives us the flag: picoCTF{almost_like_mario_8861411c} 
+At first I just used the command `nc 2018shell.picoctf.com 2015`, but this just lead to text being thrown at me constantly. I then decided to put all the text to a file: `nc 2018shell.picoctf.com 2015 > file.txt`. I then used grep to find the flag: `strings file.txt | grep pico` which gives us the flag: `picoCTF{almost_like_mario_8861411c}`
 
 ---
 ### Inspect Me
@@ -110,7 +114,7 @@ Inpect this code! http://2018shell.picoctf.com:28831 (link)
 ```
 
 ##### Writeup
-I opened the link provided, and what was shown was a simple website titled “My First Website”. I looked into the page source to view the html, and noticed a comment at the bottom showing part ⅓ of the flag. Noticing that the CSS stylesheet and the Javascript were also the writer’s own, I clicked those links to see if the remaining flag parts were there. I found part ⅔ of the flag in the stylesheet. The Javascript had what it claimed to be part 3/3 of the flag, but there was nothing shown to add to the flag. The flag is: picoCTF{ur_4_real_1nspect0r_g4dget_b4887011}
+I opened the link provided, and what was shown was a simple website titled “My First Website”. I looked into the page source to view the html, and noticed a comment at the bottom showing part ⅓ of the flag. Noticing that the CSS stylesheet and the Javascript were also the writer’s own, I clicked those links to see if the remaining flag parts were there. I found part ⅔ of the flag in the stylesheet. The Javascript had what it claimed to be part 3/3 of the flag, but there was nothing shown to add to the flag. The flag is: `picoCTF{ur_4_real_1nspect0r_g4dget_b4887011}`
 
 ---
 ### grep 2
@@ -120,7 +124,7 @@ This one is a little bit harder. Can you find the flag in /problems/grep-2_4_06c
 ```
 
 ##### Writeup
-This one gave me difficulty at first. Of course, I could go through each directory and use the grep command to search through all files, but that would take too long. I did not know how to search through multiple directories, though, so I went to google and found that it was simpler than I thought. I just had to put the path down, so I used the command `grep pico ./*/*` and got the flag: picoCTF{grep_r_and_you_will_find_036bbb25}
+This one gave me difficulty at first. Of course, I could go through each directory and use the grep command to search through all files, but that would take too long. I did not know how to search through multiple directories, though, so I went to google and found that it was simpler than I thought. I just had to put the path down, so I used the command `grep pico ./*/*` and got the flag: `picoCTF{grep_r_and_you_will_find_036bbb25}`
 
 ---
 ### Aca-Shell-A
@@ -130,7 +134,7 @@ It's never a bad idea to brush up on those linux skills or even learn some new o
 ```
 
 ##### Writeup
-This challenge took me longer than I expected. It took me many attempts to get the flag. The first couple of parts were easy: all I had to do was get into the ‘secret’ folder, and do as the helper said. I already knew how to use the ‘rm’ command, and echo as well, but when I had to print the username without echo, I was stuck at first. It took me a while to actually get the hint (“Who are you?”), and after probably 15 minutes of retrying different things, I typed `whoami`, giving the username. After that, I just had to copy a file to another location, then print what that file contains. We get the flag: picoCTF{CrUsHeD_It_4e355279}
+This challenge took me longer than I expected. It took me many attempts to get the flag. The first couple of parts were easy: all I had to do was get into the ‘secret’ folder, and do as the helper said. I already knew how to use the ‘rm’ command, and echo as well, but when I had to print the username without echo, I was stuck at first. It took me a while to actually get the hint (“Who are you?”), and after probably 15 minutes of retrying different things, I typed `whoami`, giving the username. After that, I just had to copy a file to another location, then print what that file contains. We get the flag: `picoCTF{CrUsHeD_It_4e355279}`
 
 ---
 ### Client Side is Still Bad
@@ -140,7 +144,7 @@ I forgot my password again, but this time there doesn't seem to be a reset, can 
 ```
 
 ##### Writeup
-This one was almost simpler than ‘Inspect Me’ challenge. All I did was to view the page source, and within all of the if statements: picoCTF{client_is_bad_3bd366}
+This one was almost simpler than ‘Inspect Me’ challenge. All I did was to view the page source, and within all of the if statements: `picoCTF{client_is_bad_3bd366}`
 
 ---
 ### Desrouleaux
@@ -150,7 +154,7 @@ Our network administrator is having some trouble handling the tickets for all of
 ```
 
 ##### Writeup
-For this challenge, I just followed the instructions on the screen. It would ask me questions about the .json file that was sent, such as what was the most common source IP, for which i would just check the file manually (there are only 10 entries, so it was a quick look over). Then, I it would give a source IP and ask how many unique destination IPs were targeted by it. The final question it what took me the longest. I had to find out the average amount of unique destinations for each file hash. The ‘3eeaf’ file had 2 destinations, but not unique, so I only counted one. ‘9387’ file had 2 unique destinations, and the rest of the files all had only 1 destination. There were a total of 8 files, so the average was 9/8 = 1.125, but they wanted it to 2 decimal places so the answer was 1.13. The flag given at the end was this: picoCTF{J4y_s0n_d3rUUUULo_a062e5f8}
+For this challenge, I just followed the instructions on the screen. It would ask me questions about the .json file that was sent, such as what was the most common source IP, for which i would just check the file manually (there are only 10 entries, so it was a quick look over). Then, I it would give a source IP and ask how many unique destination IPs were targeted by it. The final question it what took me the longest. I had to find out the average amount of unique destinations for each file hash. The ‘3eeaf’ file had 2 destinations, but not unique, so I only counted one. ‘9387’ file had 2 unique destinations, and the rest of the files all had only 1 destination. There were a total of 8 files, so the average was 9/8 = 1.125, but they wanted it to 2 decimal places so the answer was 1.13. The flag given at the end was this: `picoCTF{J4y_s0n_d3rUUUULo_a062e5f8}`
 
 ---
 ### Logon 
@@ -160,7 +164,7 @@ I made a website so now you can log on to! I don't seem to have the admin passwo
 ```
 
 ##### Writeup
-For this one, I understood that I couldn’t just log in as admin, and that putting any other strings into username and password would log me in, but I would be told that I get no flag. After an hour of looking at the page source, and trying random passwords with the admin username, I gave up and decided to look up the challenge. After figuring out that it had something to do with editing cookies, I downloaded a cookie editor. Going back to the page and trying to log in, I noticed that one of the cookies is labelled ‘admin’, and it is set to ‘False’, so it would make sense to just change it to being ‘True’. After doing that and refreshing the page, I got the flag: picoCTF{l0g1ns_ar3nt_r34l_a280e12c}
+For this one, I understood that I couldn’t just log in as admin, and that putting any other strings into username and password would log me in, but I would be told that I get no flag. After an hour of looking at the page source, and trying random passwords with the admin username, I gave up and decided to look up the challenge. After figuring out that it had something to do with editing cookies, I downloaded a cookie editor. Going back to the page and trying to log in, I noticed that one of the cookies is labelled ‘admin’, and it is set to ‘False’, so it would make sense to just change it to being ‘True’. After doing that and refreshing the page, I got the flag: `picoCTF{l0g1ns_ar3nt_r34l_a280e12c}`
 
 ---
 ### Reading Between the Eyes
@@ -172,7 +176,7 @@ Stego-Saurus hid a message for you in this image, can you retreive it?
 ##### Writeup
 This is the given image:
 ![husky](/images/husky.png)
-I’m not too familiar with forensics problems, but this one was a simple one to solve. There is a hidden message inside of an image, and the hint says that we can find a decoder online. I was at first confused by the “stego-saurus” part, but after looking for image decoders, I quickly found out that this was referencing steganography. Finding an online decoder was easy (I used https://stylesuxx.github.io/steganography/), and so all I had to do was put the image in, and I got the flag: picoCTF{r34d1ng_b37w33n_7h3_by73s}
+I’m not too familiar with forensics problems, but this one was a simple one to solve. There is a hidden message inside of an image, and the hint says that we can find a decoder online. I was at first confused by the “stego-saurus” part, but after looking for image decoders, I quickly found out that this was referencing steganography. Finding an online decoder was easy (I used https://stylesuxx.github.io/steganography/), and so all I had to do was put the image in, and I got the flag: `picoCTF{r34d1ng_b37w33n_7h3_by73s}`
 
 ---
 ### Recovering From the Snap
@@ -182,7 +186,7 @@ There used to be a bunch of animals here, what did Dr. Xernon do to them?
 ```
 
 ##### Writeup
-I honestly had no idea what to do here. I decided to look up the problem, and the [first writeup](https://github.com/mzfr/ctf-writeups/tree/master/picoCTF-2018/Forensics/Recovering%20From%20the%20Snap) I found let me know that it was really easy, and all I had to do was use tools for it, such as Photorec. Using this program on the file provided, you will get 4 recovered images, one of which is the flag picoCTF{th3_5n4p_happ3n3d}.
+I honestly had no idea what to do here. I decided to look up the problem, and the [first writeup](https://github.com/mzfr/ctf-writeups/tree/master/picoCTF-2018/Forensics/Recovering%20From%20the%20Snap) I found let me know that it was really easy, and all I had to do was use tools for it, such as Photorec. Using this program on the file provided, you will get 4 recovered images, one of which is the flag `picoCTF{th3_5n4p_happ3n3d}`.
 
 ---
 ### admin panel
@@ -192,7 +196,7 @@ We captured some traffic logging into the admin panel, can you find the password
 ```
 
 ##### Writeup
-Using WireShark, I went through the packets of the .pcap file. There is communication with a website, and we are wanting the password for the admin, so we need to look for where ever users log in, which is shown in this pcap with `POST /login`. It doesn't take too long to find the one that the admin is specifically logging in, and we get the password, which is the flag: picoCTF{n0ts3cur3_894a6546}
+Using WireShark, I went through the packets of the .pcap file. There is communication with a website, and we are wanting the password for the admin, so we need to look for where ever users log in, which is shown in this pcap with `POST /login`. It doesn't take too long to find the one that the admin is specifically logging in, and we get the password, which is the flag: `picoCTF{n0ts3cur3_894a6546}`
 
 ---
 ### assembly-0
@@ -222,7 +226,7 @@ This is one of the older ciphers in the books, can you decrypt the message? You 
 ```
 
 ##### Writeup
-It was quite simple to find a caesar cipher decoder, give it the flag, then check for each shift until the flag had recognizable words. 
+It was quite simple to find a caesar cipher decoder, give it the flag, then check for each shift until the flag had recognizable words. The flag is `picoCTF{justagoodoldcaesarciphertobrvmri}` 
 
 ---
 ### environ
@@ -232,7 +236,7 @@ Sometimes you have to configure environment variables before executing a program
 ```
 
 ##### Writeup
-All that needed to be done was going into the picoCTF shell and using the command `printenv | grep picoCTF` to get the flag.
+All that needed to be done was going into the picoCTF shell and using the command `printenv | grep picoCTF` to get the flag: `picoCTF{eNv1r0nM3nT_v4r14Bl3_fL4g_3758492}`
 
 ---
 ### hertz
@@ -242,7 +246,7 @@ Here's another simple cipher for you where we made a bunch of substitutions. Can
 ```
 
 ##### Writeup
-This challenge was a substitution cipher. At first, I was just going to manually do it by going with some simple crypto analysis, and after finding that q = e, I realized it would take a while. I went online to see if there was an online brute force decoder for it, I quickly found guballa.de, which solved the problem almost immediately, giving us the flag (which was not in normal format): substitution_ciphers_are_solvable_cdilgndlnp.
+This challenge was a substitution cipher. At first, I was just going to manually do it by going with some simple crypto analysis, and after finding that q = e, I realized it would take a while. I went online to see if there was an online brute force decoder for it, I quickly found guballa.de, which solved the problem almost immediately, giving us the flag (which was not in normal format): `substitution_ciphers_are_solvable_cdilgndlnp`.
 
 ---
 ### hex editor
@@ -252,7 +256,7 @@ This cat has a secret to teach you. You can also find the file in /problems/hex-
 ```
 
 ##### Writeup
-This challenge tells us to use hex editors, such as the xxd command. The image being used seems like it would be too large to read through all of the hex, so I piped the output to grep to find the flag: xxd hex_editor.jpg | grep pico. But this only gave me the first piece of the flag. At the beginning of each line, though, is a relative address. The one I was first given was 00012940. I assumed this was hex, and added 8 to it. This gave me no result, probably because each line is a jump of 16, not 8. So afterwards, I just jumped the address up by 0x10 until I got the full flag: xxd hex_editor.jpg | grep 00012950, etc.
+This challenge tells us to use hex editors, such as the xxd command. The image being used seems like it would be too large to read through all of the hex, so I piped the output to grep to find the flag: xxd hex_editor.jpg | grep pico. But this only gave me the first piece of the flag. At the beginning of each line, though, is a relative address. The one I was first given was 00012940. I assumed this was hex, and added 8 to it. This gave me no result, probably because each line is a jump of 16, not 8. So afterwards, I just jumped the address up by 0x10 until I got the full flag: xxd hex_editor.jpg | grep 00012950, etc. The flag is `picoCTF{and_thats_how_u_edit_hex_kittos_4bE5aCb8}`
 
 ---
 ### ssh-keyz
@@ -262,7 +266,7 @@ As nice as it is to use our webshell, sometimes its helpful to connect directly 
 ```
 
 ##### Writeup
-Following the tutorial in the hints section, I made my own key and had to make a directory and file in the ctf shell to have my key authorized. After that, it was as simple as logging into the shell through ssh: `ssh lasivori@2018shell4.picoctf.com`
+Following the tutorial in the hints section, I made my own key and had to make a directory and file in the ctf shell to have my key authorized. After that, it was as simple as logging into the shell through ssh: `ssh lasivori@2018shell4.picoctf.com`. The flag is `picoCTF{who_n33ds_p4ssw0rds_38dj21}`
 
 ---
 ### Irish Name Repo
@@ -271,7 +275,7 @@ Following the tutorial in the hints section, I made my own key and had to make a
 There is a website running at http://2018shell.picoctf.com:52012 (link). Do you think you can log us in? Try to see if you can login!
 ```
 ##### Writeup
-I honestly had no idea what to do with this one. I had looked through all the html, looked through cookies, everything I could think of. I decided to look up this one, and apparently it is week to SQL attacks, so for the password we had to enter  `‘ or ‘x’=’x` which gives us the flag.
+I honestly had no idea what to do with this one. I had looked through all the html, looked through cookies, everything I could think of. I decided to look up this one, and apparently it is week to SQL attacks, so for the password we had to enter  `‘ or ‘x’=’x` which gives us the flag: `picoCTF{con4n_r3411y_1snt_1r1sh_c0d93e2f}`
 
 ---
 ### Mr Robots
@@ -291,7 +295,7 @@ Looks like someone started making a website but never got around to making a log
 ```
 
 ##### Writeup
-First, I click everything I see on the website to see what does what. Login and Sign out don’t work, since they haven’t been implemented yet. The flag still requires that you are admin. For a while, I was trying to see if I could force a login somehow, but then I remembered the “Logon” challenge, in which I had to change a cookie to log in. This time, I had to make the cookie, called admin, and set it to True. Then clicking the flag button gave me the flag.
+First, I click everything I see on the website to see what does what. Login and Sign out don’t work, since they haven’t been implemented yet. The flag still requires that you are admin. For a while, I was trying to see if I could force a login somehow, but then I remembered the “Logon” challenge, in which I had to change a cookie to log in. This time, I had to make the cookie, called admin, and set it to True. Then clicking the flag button gave me the flag: `picoCTF{n0l0g0n_n0_pr0bl3m_ed714e0e}`
 
 ---
 ### Secret Agent
@@ -301,7 +305,7 @@ Here's a little website that hasn't fully been finished. But I heard google gets
 ```
 
 ##### Writeup
-For this one, the hint asked how your browser can pretend to be something else, and the initial challenge mentioned google having all the information, so I googled the hint. It led me to downloading a Google Chrome extension called user-agent switcher, which tricks websites into thinking you are using whatever service you select from the extension. Using the “Googlebot” selection, since the challenge mentioned google once already, I clicked on the flag button and got the flag: picoCTF{s3cr3t_ag3nt_m4n_ac87e6a7}
+For this one, the hint asked how your browser can pretend to be something else, and the initial challenge mentioned google having all the information, so I googled the hint. It led me to downloading a Google Chrome extension called user-agent switcher, which tricks websites into thinking you are using whatever service you select from the extension. Using the “Googlebot” selection, since the challenge mentioned google once already, I clicked on the flag button and got the flag: `picoCTF{s3cr3t_ag3nt_m4n_ac87e6a7}`
 
 ---
 ### Truly an Artist
@@ -311,7 +315,7 @@ Can you help us find the flag in this Meta-Material? You can also find the file 
 ```
 
 ##### Writeup
-For this one, I looked up how to find the metadata of an image, and it led me to this website called [get-metadata](https://www.get-metadata.com/), from which you could upload a file to get it’s metadata. If you look at the artist of the image, you get the flag: picoCTF{look_in_image_eeea129e}
+For this one, I looked up how to find the metadata of an image, and it led me to this website called [get-metadata](https://www.get-metadata.com/), from which you could upload a file to get it’s metadata. If you look at the artist of the image, you get the flag: `picoCTF{look_in_image_eeea129e}`
 
 ---
 ### assembly-1
@@ -331,11 +335,11 @@ You find this when searching for some music, which leads you to be-quick-or-be-d
 ```
 
 ##### Writeup
-First thing I do is download the program and use objdump -d to look through it. After a little looking, we see that we want to avoid the timer, overall.
+First thing I do is download the program and use `objdump -d` to look through it. After a little looking, we see that we want to avoid the timer, overall.
 
 ![bequick1](/images/bequick1.png)
 
-So what I’ll do is use a hex editor to ignore these lines so that we can move on to printing the flag, and hopefully that’ll work. Using the online hex editor “hexed.it”, I open the file and look for the 800 addresses, and after finding 840, I see familiar hex code.
+So what I’ll do is use a hex editor to ignore these lines so that we can move on to printing the flag, and hopefully that’ll work. Using the online hex editor [“hexed.it”](https://hexed.it/), I open the file and look for the 800 addresses, and after finding 840, I see familiar hex code.
 
 ![bequick2](/images/bequick2.png)
 
@@ -349,7 +353,7 @@ So this time, let’s only remove the call for set_timer:
 
 ![bequick5](/images/bequick5.png)
 
-And it worked!
+And it worked! The flag is `picoCTF{why_bother_doing_unnecessary_computation_402ca676}`
 
 
 ---
@@ -371,7 +375,7 @@ Assuming this is a Vigenere Cipher, I use this code breaking website to help out
 
 ![blaise3](/images/blaise3.png)
 
-Which gives us the flag!
+Which gives us the flag! `picoCTF{v1gn3r3_c1ph3rs_ar3n7_bad_cdf08bf0}`
 
 ---
 ### buffer overflow 1
@@ -383,7 +387,7 @@ Okay now you're cooking! This time can you overflow the buffer and return to the
 ##### Writeup
 This challenge gives a vulnerable program for which we can give an input, but if we put enough characters, it affects the address we would jump. So first, we get the address of where we need to go but using `objdump -d`, and I see that I’d need to jump to 080485cb to get to the “win” function, which I'm assuming will give us the flag. Next, we see how much buffer we need. Looking at the source code, we see that the buffer is 32 characters, so I start with 36 characters to see what happens, then continue adding four each time until the address changes, which we get 48 characters. So we need 44 characters of padding, and then the final 4 would be to get the address. Using python and pwntools, we attach the address in little endian at the end of our 44 character padding: 
 `python -c "from pwn import *; print 'A' * 44 + '\xcb\x85\x04\x08'" | ./vuln`
-This gives us the right address, and therefore the flag picoCTF{addr3ss3s_ar3_3asy14941911}
+This gives us the right address, and therefore the flag `picoCTF{addr3ss3s_ar3_3asy14941911}`
 
 ---
 ### hertz 2
@@ -393,7 +397,7 @@ This flag has been encrypted with some kind of cipher, can you decrypt it? Conne
 ```
 
 ##### Writeup
-This is a substitution cipher, so looking up “substitution cipher decoder” I found this website: https://www.guballa.de/substitution-solver. This solves the cipher really quickly and gives us the flag.
+This is a substitution cipher, so looking up “substitution cipher decoder” I found this website: https://www.guballa.de/substitution-solver. This solves the cipher really quickly and gives us the flag: `picoCTF{substitution_ciphers_are_too_easy_dngaowmvye}`
 
 ![hertz2](/images/hertz2-1.png)
 
@@ -405,7 +409,7 @@ Can you authenticate to this service and get the flag? Connect with nc 2018shell
 ```
 
 ##### Writeup
-This challenge is a buffer overflow challenge. Looking at the source code, we see that the password can be 64 characters long, and the username can be 256 characters long. What I did was input 257 characters as the username, and I received the password (as part of the username). I then retried logging in, but with a few letters in the username, then trying out this “really secure password”, which gave me the flag.
+This challenge is a buffer overflow challenge. Looking at the source code, we see that the password can be 64 characters long, and the username can be 256 characters long. What I did was input 257 characters as the username, and I received the password (as part of the username). I then retried logging in, but with a few letters in the username, then trying out this “really secure password”, which gave me the flag: `picoCTF{aLw4y5_Ch3cK_tHe_bUfF3r_s1z3_958ebb8e}`
 
 ---
 ### now you don't
@@ -415,7 +419,7 @@ We heard that there is something hidden in this picture. Can you find it?
 ```
 
 ##### Writeup
-You get a red image for this challenge, along with the hint “is it really all one shade of red?”. So I decided to throw the image in an image editor, and mess with the color balance until I could see letters, which gave me the flag: picoCTF{n0w_y0u_533_m3}
+You get a red image for this challenge, along with the hint “is it really all one shade of red?”. So I decided to throw the image in an image editor, and mess with the color balance until I could see letters, which gave me the flag: `picoCTF{n0w_y0u_533_m3}`
 
 ![now you don't](/images/see.png)
 
@@ -433,7 +437,7 @@ Looking through the main function, we see that there is a call to a written func
 
 ![quack](/images/quack1.png)
 
-Such as 0x8048858, and 0x804a038. We can use objdump -sj .rodata main to view the hardcoded strings, and their addresses:
+Such as 0x8048858, and 0x804a038. We can use `objdump -sj .rodata main` to view the hardcoded strings, and their addresses:
 
 ![quack](/images/quack2.png)
 
@@ -458,7 +462,7 @@ From all of this, we see that there is a xor operation happening between what yo
 
 ![goose!](/images/quack7.png)
 
-We get the flag! 
+We get the flag! `picoCTF{qu4ckm3_35246994}`
 
 
 ---
@@ -469,7 +473,7 @@ This program executes any input you give it. Can you get a shell? You can find t
 ```
 
 ##### Writeup
-For this challenge, we need to get a shell through a program. First we need to write or get shellcode, so after a quick google, we find shellstorm, which has shellcode prepared. Using uname, we find that the shell runs on Linux, so we go to the Linux section and we just need to find a simple code that gives /bin/sh. This one seemed to be simple enough: http://shell-storm.org/shellcode/files/shellcode-690.php. We take the characters it gives in the code, and print it into `./vuln`, but this doesn’t keep input open. I didn’t know how to keep the pipe open for continuous input, so after a google search, I’ve found that if I cat the file and add ‘-’ to the end before piping, it keeps it open for input. So, I put the string to get to the shell in `~/shell.txt`. Then, using the line `cat ~/shell.txt - | ./vuln`  I was able to get access to a shell with more permissions. I then used ls to see what there is, and then `cat flag.txt` to get the flag: picoCTF{shellc0de_w00h00_9ee0edd0}
+For this challenge, we need to get a shell through a program. First we need to write or get shellcode, so after a quick google, we find shellstorm, which has shellcode prepared. Using uname, we find that the shell runs on Linux, so we go to the Linux section and we just need to find a simple code that gives `/bin/sh`. This one seemed to be simple enough: http://shell-storm.org/shellcode/files/shellcode-690.php. We take the characters it gives in the code, and print it into `./vuln`, but this doesn’t keep input open. I didn’t know how to keep the pipe open for continuous input, so after a google search, I’ve found that if I cat the file and add ‘-’ to the end before piping, it keeps it open for input. So, I put the string to get to the shell in `~/shell.txt`. Then, using the line `cat ~/shell.txt - | ./vuln`  I was able to get access to a shell with more permissions. I then used ls to see what there is, and then `cat flag.txt` to get the flag: `picoCTF{shellc0de_w00h00_9ee0edd0}`
 
 ---
 ### what base is this?
@@ -483,7 +487,7 @@ This challenge is a fairly simple one. We are asked to give input based off of h
 
 ![base](/images/base.png)
 
-The first one is binary, the second is hex, and the final is octal. The first two were easy to see what they were, then convert, but for the octal one, I at first thought it’d be decimal, but that didn’t match up, so I had to go find an octal converter. After answering the questions we get the flag: picoCTF{delusions_about_finding_values_602fd280}
+The first one is binary, the second is hex, and the final is octal. The first two were easy to see what they were, then convert, but for the octal one, I at first thought it’d be decimal, but that didn’t match up, so I had to go find an octal converter. After answering the questions we get the flag: `picoCTF{delusions_about_finding_values_602fd280}`
 
 ---
 ### you can't see me
@@ -498,7 +502,7 @@ Files with dots in the beginning can be hidden, but using the man page we can se
 
 ![dots](/images/hidden.png)
 
-Which gives us the flag: picoCTF{j0hn_c3na_paparapaaaaaaa_paparapaaaaaa_22f627d9}
+Which gives us the flag: `picoCTF{j0hn_c3na_paparapaaaaaaa_paparapaaaaaa_22f627d9}`
 
 ---
 ### Buttons 
@@ -520,7 +524,7 @@ So, using Google Chrome’s ability to edit html, i put the second button in the
 
 ![edit](/images/buttons3.png)
  
-Which, when I click the button now, it leads to the flag: picoCTF{button_button_whose_got_the_button_ed306c10}
+Which, when I click the button now, it leads to the flag: `picoCTF{button_button_whose_got_the_button_ed306c10}`
 
 ---
 ### Ext Super Magic
@@ -542,18 +546,18 @@ Which gives us nothing. What about the last hint:
 
 ![hint](/images/supermagic3.png)
 
-It says there is a bad number in the superblock, but how do we know where? According to the website previously listed, the magic number we found before belongs at an offset of 56 bytes, from 1024 (since this format always has the superblock at an offset of 1024). So now we will use a hexeditor (hexed.it) to hopefully fix the issue.
+It says there is a bad number in the superblock, but how do we know where? According to the website previously listed, the magic number we found before belongs at an offset of 56 bytes, from 1024 (since this format always has the superblock at an offset of 1024). So now we will use a [hexeditor](https://hexed.it/) to hopefully fix the issue.
 Decimal 1080 leads to hex 438, and I am assuming we are using little endian format.
 
 ![hexedit](/images/supermagic4.png)
 
 ![debugfs](/images/supermagic5.png)
 
-It worked, so now we use debugfs to access the files in the image: 
+It worked, so now we use `debugfs` to access the files in the image: 
 
 ![flag.jpg](/images/supermagic6.png)
 
-Surrounded by hundreds of other files, I just searched for “flag” using /flag, and found this. Now that I know it is a thing, I need to save it to access it. After a quick google, I found that the way to do this with debugfs is to use the command “dump”:
+Surrounded by hundreds of other files, I just searched for “flag” using `/flag`, and found this. Now that I know it is a thing, I need to save it to access it. After a quick google, I found that the way to do this with `debugfs` is to use the command `dump`:
 
 ![dump](/images/supermagic7.png)
 
@@ -561,7 +565,7 @@ This gives us a fairly large image with this at the top:
 
 ![flag](/images/supermagic8.png)
 
-We got the flag! picoCTF{ab0CD63BC762514ea2f4fc9eDEC8cb1E}
+We got the flag! `picoCTF{ab0CD63BC762514ea2f4fc9eDEC8cb1E}`
 
 ---
 ### Lying Out
@@ -579,7 +583,7 @@ Following instructions, and comparing data, we put in the areas that should not 
 
 ![traffic](/images/lyingout2.png)
 
-And we get the flag! picoCTF{w4y_0ut_de051415}
+And we get the flag! `picoCTF{w4y_0ut_de051415}`
 
 ---
 ### The Vault
@@ -593,8 +597,8 @@ The website is fairly simple, and provides a link under the login, which gives u
 
 ![vault](/images/vault1.png)
 
-This tells us that they are using SQL to store their passwords, so what we are going to do is the same thing we did with Irish Repo: just enter any username, and have the password of ‘ or ‘ = ‘x
-Which works, and gives us the flag: picoCTF{w3lc0m3_t0_th3_vault_23495366}
+This tells us that they are using SQL to store their passwords, so what we are going to do is the same thing we did with Irish Repo: just enter any username, and have the password of `‘ or ‘ = ‘x`
+Which works, and gives us the flag: `picoCTF{w3lc0m3_t0_th3_vault_23495366}`
 
 ![vault](/images/vault2.png)
 
@@ -610,7 +614,7 @@ The hint for this challenge asks “If you visited a website at an IP address, h
 
 ![dns](/images/name1.png)
 
-Which, we find the flag within the second one: picoCTF{w4lt3r_wh1t3_ddfad6f8f4255adc73e862e3cebeee9d}
+Which, we find the flag within the second one: `picoCTF{w4lt3r_wh1t3_ddfad6f8f4255adc73e862e3cebeee9d}`
 
 ![name](/images/name2.png)
 
@@ -626,7 +630,7 @@ Looking at the source code, we see that the program will read for a file called 
 
 ![relative](/images/relative.png)
 
-And it works! The flag is: picoCTF{3v3r1ng_1$\_r3l3t1v3_befc0ce1}
+And it works! The flag is: `picoCTF{3v3r1ng_1$_r3l3t1v3_befc0ce1}`
 
 ---
 ### assembly-2
@@ -646,7 +650,7 @@ Alright, this time you'll need to control some arguments. Can you get the flag f
 ```
 
 ##### Writeup
-This one is a bit more complicated than the last. We need to pass in arguments this time. Using objdump, we can see that there is still the ‘win’ function, and the checks that are in the source code are within the ‘win’ function, so first we need to get there, then give the arguments. So, using gdb so that I’d be able to view what’s in registers, I put a breakpoint at vuln and at win. 
+This one is a bit more complicated than the last. We need to pass in arguments this time. Using `objdump`, we can see that there is still the ‘win’ function, and the checks that are in the source code are within the ‘win’ function, so first we need to get there, then give the arguments. So, using gdb so that I’d be able to view what’s in registers, I put a breakpoint at vuln and at win. 
 
 ![win](/images/overflow2-1.png)
 
@@ -670,7 +674,7 @@ After this, I tried downloading the files and running it on my virtual machine, 
 
 ![vm](/images/overflow2-6.png)
 
-In the end, I just decided to try out answers until it worked. I assumed that the arguments would be in order, so after the part of the buffer that is the return address that we want, I put in the little endian hex values for the arguments: DEADBEEF and DEADC0DE. The first attempt didn’t work, but I put 4 A’s between the arguments and the address, and got the flag: picoCTF{addr3ss3s_ar3_3asya4104c14}
+In the end, I just decided to try out answers until it worked. I assumed that the arguments would be in order, so after the part of the buffer that is the return address that we want, I put in the little endian hex values for the arguments: DEADBEEF and DEADC0DE. The first attempt didn’t work, but I put 4 A’s between the arguments and the address, and got the flag: `picoCTF{addr3ss3s_ar3_3asya4104c14}`
 
 ![flag](/images/overflow2-7.png)
 
@@ -682,6 +686,61 @@ Can you help us decrypt this message? We believe it is a form of a caesar cipher
 ```
 
 ##### Writeup
-Caesar ciphers tend to be simple, so there’s already tons of online tools for decoding them. I used this one, since it’s for the full ascii alphabet: https://www.dcode.fr/ascii-shift-cipher. The cipher text is this weird text: `e^Xd8I;pX6ZhVGT8^E]:gHT_jHITVG:cITh:XJg:r`  given to us by the shell server. Decoding it with the website, one of the decryptions is the flag: picoCTF{cAesaR_CiPhErS_juST_aREnT_sEcUrE}
+Caesar ciphers tend to be simple, so there’s already tons of online tools for decoding them. I used this one, since it’s for the full ascii alphabet: https://www.dcode.fr/ascii-shift-cipher. The cipher text is this weird text given to us by the shell server: `e^Xd8I;pX6ZhVGT8^E]:gHT_jHITVG:cITh:XJg:r`. Decoding it with the website, one of the decryptions is the flag: `picoCTF{cAesaR_CiPhErS_juST_aREnT_sEcUrE}`
+
+---
+### learn gdb
+##### Challenge
+>Using a debugging tool will be extremely useful on your missions. Can you run this [program](https://2018shell.picoctf.com/static/999e37c9737d95c105ea29ae5b3fac1f/run) in gdb and find the flag? You can find the file in /problems/learn-gdb_3_f1f262d9d48b9ff39efc3bc092ea9d7b on the shell server.
+
+##### Writeup
+For this challenge, we are supposed to use GDB to find the flag in a program. With a quick look using `objdump -d run`, we can see that the program uses a function called “decrypt_flag”. So when I get into gdb, I set a breakpoint at “decrypt_flag”, then run. There is an automatic breakpoint in main, and I run `disas` to see what is going on, and I see that I don’t even need to see the decrypt_flag function. I could just put a break right after it at the point 0x40090a: 
+
+![gdb](/images/gdb.png)
+
+Continuing from here we see that they decrypt the variable “flag_buf”, and so at our next break, we can use the command `x/s flag_buf` to view the string stored in this variable, giving us the flag: `picoCTF{gDb_iS_sUp3r_u53fuL_efaa2b29}`
+
+![flag](/images/gdb2.png)
+
+---
+### Flaskcards
+##### Challenge
+>We found this fishy [website](http://2018shell.picoctf.com:51878/) for flashcards that we think may be sending secrets. Could you take a look?
+
+##### Writeup
+I barely knew where to start for this one. It’s supposed to be a flashcard making website, but the challenge name is “misspelled”, which cannot be a coincidence. I looked up “website flask” and found that Flask is used as a framework, and I quickly found this website: https://nvisium.com/blog/2015/12/07/injecting-flask.html which talks about how Flask is vulnerable to injections. I tried putting injections in the URL at first, but that didn’t work. The hints mentioned “Is there anywhere that filtering doesn't get applied?” The only other places to enter things is through logging in and creating cards, so I tested `{{5*5}}` in both. For logging in, I wasn’t allowed to put that as my username, but it worked for the flashcards:
+
+![flask test](/images/flask1.png)
+![vulnerability](/images/flask2.png)
+
+But now what? I’ve been reading through Flask framework stuff for a while. One of the things I first searched was this website: https://blog.miguelgrinberg.com/post/the-flask-mega-tutorial-part-iv-database which seems that one of the first things you come to is a “config” object that seems important, so why not test that:
+
+![config](/images/flask3.png)
+
+Which gives us this mess, so let’s search for “picoCTF”.
+
+![config](/images/flask4.png)
+
+And we got the flag! `picoCTF{secret_keys_to_the_kingdom_e8a55760}`
+
+![flag](/images/flask5.png)
+
+---
+### Secure Logon
+##### Challenge
+>Uh oh, the login page is more secure... I think. http://2018shell.picoctf.com:13747 ([link](http://2018shell.picoctf.com:13747/)). [Source](https://2018shell.picoctf.com/static/336b6b2aa0b52e8954f817df605cccd7/server_noflag.py).
+
+##### Writeup
+ooking at the source code for this web exploitation challenge, at first I thought it would have to do with a Flask weakness due to the website using it. Testing injection code in the username and password areas, I quickly realize it’s not going to work, so I go back to looking at the source code. We see that the cookie for admin is set to 0, and the rest are related to the password and username chosen. The cookie is encrypted using AES CBC, which means that block encryption and decryption relies on previous blocks. Since they are using base64, we will have to as well to exploit the weaknesses of CBC. I’m assuming that the ultimate goal is to have admin set to 1 instead of 0: given the plaintext `{'admin': 0, 'username': 'user', 'password': 'pass'}`, we can see that the number we need to change is the 11th letter. Now we take our cookie, decode it with base64, and edit the hex that we need to (position 10 being the 11th letter):
+
+![b64 to hex](/images/secure1.png)
+
+We XOR the bit we need flipped with 0x01, since CBC is weak to bit flipping attacks. We then replace the 11th letter ‘0xb0’ with ‘0xb1’ and encode it with base64 to get our new cookie:
+
+![cookie edit](/images/secure2.png)
+
+Using a cookie editor in chrome, I put in the new cookie and refresh the page for the flag: `picoCTF{fl1p_4ll_th3_bit3_7d7c2296}`
+
+![flag](/images/secure3.png)
 
 ---

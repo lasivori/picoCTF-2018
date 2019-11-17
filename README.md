@@ -143,7 +143,7 @@ For this challenge, I just followed the instructions on the screen. It would ask
 ---
 ### Logon 
 ##### Challenge
-I made a website so now you can log on to! I don't seem to have the admin password. See if you can't get to the flag. http://2018shell.picoctf.com:37861 ([link](http://2018shell.picoctf.com:37861))
+>I made a website so now you can log on to! I don't seem to have the admin password. See if you can't get to the flag. http://2018shell.picoctf.com:37861 ([link](http://2018shell.picoctf.com:37861))
 
 ##### Writeup
 For this one, I understood that I couldn’t just log in as admin, and that putting any other strings into username and password would log me in, but I would be told that I get no flag. After an hour of looking at the page source, and trying random passwords with the admin username, I gave up and decided to look up the challenge. After figuring out that it had something to do with editing cookies, I downloaded a cookie editor. Going back to the page and trying to log in, I noticed that one of the cookies is labelled ‘admin’, and it is set to ‘False’, so it would make sense to just change it to being ‘True’. After doing that and refreshing the page, I got the flag: `picoCTF{l0g1ns_ar3nt_r34l_a280e12c}`
@@ -609,11 +609,11 @@ Caesar ciphers tend to be simple, so there’s already tons of online tools for 
 ##### Writeup
 This challenge is fairly simple, but took me a few tries since if you took too long, you would be disconnected. All of it has to do with doing math (if possible) to find certain parts of an RSA algorithm. You have to first find out if the math is possible and answer accordingly, then do the math when it is possible to move on to the next question. First it asks if you can find n, given q and p, which you can through multiplying them together. The next question asks if you can find q if given p and n, which you can by dividing n by p. Then it asks if you can find q and p from n and e, which is not possible. The next is finding the totient(n), which can be done by multiplying (q-1) with (p-1). Now is when this starts being a little difficult: we have to make the ciphertext, given plaintext, e and n. Given that the plaintext is larger than what we have dealt with so far, and n is even larger than that, I move on to python to copy and paste everything:
 
-![madlib](/images/rsamadlibs1.png)
+![madlib](/images/rsamadlibs1.PNG)
 
 The given answer is correct. The next question asks for plaintext given ciphertext, e and n, which is not possible. Then we need to find d given q p and e, which is possible but through some complicated math. Trying to find the algorithm I need, I have found that I need to use the inverse modulus function, which is provided in Crypto.Util.number. So using this, I was able to answer the next to problems, which once we complete we get this message: 
 
-![madlib](/images/rsamadlibs2.png)
+![madlib](/images/rsamadlibs2.PNG)
 
 So now we use pwntools to decode this hex into ASCII and we get the flag: `picoCTF{d0_u_kn0w_th3_w@y_2_RS@_c6724916}`
 

@@ -52,6 +52,7 @@ Challenges | Category | Points
 [buffer overflow 2](#buffer-overflow-2) | Binary Exploitation | 250
 [caesar cipher 2](#caesar-cipher-2) | Cryptography | 250
 [rsa-madlibs](#rsa-madlibs) | Cryptography | 250
+[echooo](#echooo) | Binary Exploitation | 300
 [learn gdb](#learn-gdb) | General Skills | 300
 [Flaskcards](#flaskcards) | Web Exploitation | 350
 [assembly-3](#assembly-3) | Reversing | 400
@@ -689,7 +690,7 @@ And we got the flag! `picoCTF{secret_keys_to_the_kingdom_e8a55760}`
 assembly-3 400
 As we do with the rest of the assembly challenges, we just follow the instructions. The only complications now is for which parts of the input are going into which parts of registers, due to the sizes taken, then used Python to do the math for me:
 
-![assembly](/images/assembly3.png)
+![assembly](/images/assembly3.PNG)
 
 The flag is 0x56a3.
 

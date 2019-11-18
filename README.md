@@ -54,6 +54,7 @@ Challenges | Category | Points
 [rsa-madlibs](#rsa-madlibs) | Cryptography | 250
 [learn gdb](#learn-gdb) | General Skills | 300
 [Flaskcards](#flaskcards) | Web Exploitation | 350
+[assembly-3](#assembly-3) | Reversing | 400
 [Secure Logon](#secure-logon) | Web Exploitation | 500
 
 
@@ -621,6 +622,26 @@ So now we use pwntools to decode this hex into ASCII and we get the flag: `picoC
 
 Here is the full python script that I wrote for the answers: [rsa-madlibs.py](https://github.com/lasivori/picoCTF-2018/blob/master/rsa-madlibs.py)
 
+---
+### echooo
+##### Challenge
+>This program prints any input you give it. Can you leak the flag? Connect with nc 2018shell.picoctf.com 34802. [Source](https://2018shell.picoctf.com/static/ef78275d00e7ab2809e43a6aa9563317/echo.c).
+
+##### Writeup
+For this challenge, it tells you that it’s “Time to learn about Format Strings!” and that it will use `printf()` to echo whatever we input. So, I decide to go ahead and just input `%x *64`, since `%x` is used to display integers. Given a number that I assume to be hex, I use python to convert it to ASCII:
+
+![format strings](/images/echo1.png)
+
+And we begin to see the flag (of course in the wrong order). So far we have `picoCTF{foRm4t_stRin`. We can see that this starts at about the 42nd ‘%x’ so we will now use “%42$x” and so on so that we get those parts of the stack. After some testing, I’ve decided to start with `%27$x` and go through `%42$x`, and got the following:
+
+![format strings](/images/echo2.png)
+
+Which I then used Python to decode it into ASCII:
+
+![format strings](/images/echo3.png)
+
+Of course the string is still out of order, so let’s put it in order, but it’s not compete yet: `picoCTF{foRm4t_stRinGs_aRe_DanGer0us_3f8bced`
+The last few letters right after are “/a7/d3/38" which does not make sense, it doesn’t give us anything we need, maybe there was an error. "/7d/33" makes sense, it would give us "3}" to add on the end of the flag: `picoCTF{foRm4t_stRinGs_aRe_DanGer0us_3f8bced3}` which is correct!
 
 ---
 ### learn gdb
@@ -658,6 +679,19 @@ Which gives us this mess, so let’s search for “picoCTF”.
 And we got the flag! `picoCTF{secret_keys_to_the_kingdom_e8a55760}`
 
 ![flag](/images/flask5.png)
+
+---
+### assembly-3
+##### Challenge
+>What does asm3(0xf238999b,0xda0f9ac5,0xcc85310c) return? Submit the flag as a hexadecimal value (starting with '0x'). NOTE: Your submission for this question will NOT be in the normal flag format. [Source](https://2018shell.picoctf.com/static/8574a4801ca14ef4666bc4a6e5f694c2/end_asm_rev.S) located in the directory at /problems/assembly-3_2_504fe35f4236db611941d162e2abc6b9.
+
+##### Writeup
+assembly-3 400
+As we do with the rest of the assembly challenges, we just follow the instructions. The only complications now is for which parts of the input are going into which parts of registers, due to the sizes taken, then used Python to do the math for me:
+
+![assembly](/images/assembly3.png)
+
+The flag is 0x56a3.
 
 ---
 ### Secure Logon
